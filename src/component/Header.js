@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const Header = () => {
   return (
-    <div>
-    <Router>
+    <div>    
       <header>
         <div className="brand text-center">
           <a href="index-2.html">
@@ -17,7 +16,7 @@ const Header = () => {
               <div className="d-flex justify-content-center align-items-center">
                 <ul className="navigation list-unstyled mt-4 d-flex justify-content-between align-items-center">
                   <li className="nav-item">
-                    <Link tp="/" className="nav-link">
+                    <Link to="/" className="nav-link">
                       Home
                     </Link>
                   </li>
@@ -37,7 +36,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      </Router>
+      
     </div>
   );
 };

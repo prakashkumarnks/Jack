@@ -6,18 +6,25 @@ import './../assets/css/responsive.css'
 import Header from '../component/Header'
 import Footer from '../component/Footer'
 
-
+import * as common from './../Common/Common'
 
 class DownloadResults extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { timeingResult: ["11:00 AM", "01:00 PM", "06:00 PM", "07:10 PM"], timeBy: "", active: 0 }
+        this.state = { displayData: [] }
     }
 
     searchTimeBy = (data, active) => {
         console.log("searchTimeBy")
         this.setState({ timeBy: data, active: active })
+    }
+
+    componentDidMount() {
+        common.httpverbsget('DownloadResults', null).then(data => {
+            console.log("Result", data)
+            this.setState({ displayData: data.displayData });
+        })
     }
 
     searchReaderBy = () => {
@@ -87,76 +94,16 @@ class DownloadResults extends React.Component {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>2019-10-15</td>
-                                                            <td> 557</td>
-                                                            <td> 681</td>
-                                                            <td> 779</td>
-                                                            <td> 461</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2019-10-16</td>
-                                                            <td> 605</td>
-                                                            <td> 239</td>
-                                                            <td> 897</td>
-                                                            <td> 708</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2019-10-17</td>
-                                                            <td> 606</td>
-                                                            <td> 639</td>
-                                                            <td> 309</td>
-                                                            <td> 574</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2019-10-18</td>
-                                                            <td> 182</td>
-                                                            <td> 618</td>
-                                                            <td> 700</td>
-                                                            <td> 653</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2019-10-19</td>
-                                                            <td> 591</td>
-                                                            <td> 975</td>
-                                                            <td> 098</td>
-                                                            <td> 142</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2019-10-20</td>
-                                                            <td> 961</td>
-                                                            <td> 618</td>
-                                                            <td> 976</td>
-                                                            <td> 759</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2019-10-21</td>
-                                                            <td> 824</td>
-                                                            <td> 064</td>
-                                                            <td> 942</td>
-                                                            <td> 460</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2019-10-22</td>
-                                                            <td> 992</td>
-                                                            <td> 212</td>
-                                                            <td> 803</td>
-                                                            <td> 121</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2019-10-23</td>
-                                                            <td> 532</td>
-                                                            <td> 180</td>
-                                                            <td> 086</td>
-                                                            <td> 659</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2019-10-24</td>
-                                                            <td> 449</td>
-                                                            <td> 070</td>
-                                                            <td> 574</td>
-                                                            <td> 670</td>
-                                                        </tr>
+
+                                                        {this.state.displayData.map((data, index) => (
+                                                            <tr>
+                                                                <td>{data.InsertedDateTime}</td>
+                                                                <td> 557</td>
+                                                                <td> 681</td>
+                                                                <td> 779</td>
+                                                                <td> 461</td>
+                                                            </tr>
+                                                        ))}
                                                     </tbody>
                                                 </table>
                                             </div>

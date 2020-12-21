@@ -4,8 +4,8 @@ var numRows = "";
 class QueryDb {
 
 	constructor() {
-		// let DbConnectionObj = new DbConnection();
-		// this.con = DbConnectionObj.ConnectToDb();
+		let DbConnectionObj = new DbConnection();
+		this.con = DbConnectionObj.ConnectToDb();
 	}
 
 	// insert code here

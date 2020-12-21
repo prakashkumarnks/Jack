@@ -6,18 +6,27 @@ import './../assets/css/responsive.css'
 import Header from '../component/Header'
 import Footer from '../component/Footer'
 
+import   * as common  from './../Common/Common'
+
 
 
 class Home extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { timeingResult: ["11:00 AM", "01:00 PM", "06:00 PM", "07:10 PM"], timeBy: "",active : 0 }
+        this.state = { timeingResult: [], timeBy: "",active : 0 }
     }
 
     searchTimeBy = (data,active) => {
         console.log("searchTimeBy")
         this.setState({ timeBy: data,active : active })
+    }
+
+    componentDidMount()
+    {
+        common.httpverbsget('bind_time', null).then(data => {
+            this.setState({ timeingResult : data.bind_time});
+        })
     }
 
     searchReaderBy = () => {
@@ -53,13 +62,13 @@ class Home extends React.Component {
                                             <nav>
                                                 <div className="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                                                     {this.state.timeingResult.map((data, index) => (
-                                                        <span key={`-timeDisplay-${data}`}
+                                                        <span key={`-timeDisplay-${index}`}
                                                             className={`nav-item nav-link show  ${this.state.active === index ? `active` : null }` }
                                                             id="nav-profile-tab"
                                                             data-toggle="tab"
-                                                            onClick={() => this.searchTimeBy(data,index)}
+                                                            onClick={() => this.searchTimeBy(data.DataName,index)}
                                                         >
-                                                            {data}
+                                                            {data.DataName}
                                                         </span>
                                                     ))}
 

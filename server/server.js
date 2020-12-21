@@ -42,6 +42,12 @@ app.get('/bind_time', function (req, res) {
 	});
 });
 
+app.get('/DownloadResults', function (req, res) {
+	var sql = "SELECT * FROM result where IsActive = 1 order by InsertedDateTime,Timeid";
+	Db.query(sql).then(rows => {
+		res.send({ displayData : rows});
+	});
+});
 
 app.get('/a', function (req, res) {
 	var commonobj = new common();
