@@ -29,16 +29,7 @@ class DownloadResults extends React.Component {
 
     searchReaderBy = () => {
         return (<div className="tab-content mt-3 pb-3" id="nav-tabContent">
-            <div className="tab-pane fade show active" id="nav-profile0" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <div className="list-group">
-                    <li className="list-group-item"><b>JACKPOT {this.state.timeBy}</b></li>
-                    <li className="list-group-item"><b>DRAW DATE ON. 2020-11-23</b></li>
-                    <li className="list-group-item"><b>DRAW NO:</b> <strong></strong></li>
-                    <li className="list-group-item"><b>1st Prize Rs 10,000 :</b> <span style={{ fontSize: "18px", color: "#388505", fontWeight: "bold" }}></span></li>
-                    <li className="list-group-item"><b>2nd Prize Rs 1,000 :</b> <span style={{ fontSize: "18px", color: "#388505", fontWeight: "bold" }}></span></li>
-                    <li className="list-group-item"><b>3rd Prize Rs 100 :</b> <span style={{ fontSize: "18px", color: "#388505", fontWeight: "bold" }}></span></li>
-                </div>
-            </div>
+            
         </div>)
     }
 

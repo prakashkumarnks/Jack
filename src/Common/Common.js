@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 export  const ServerApi = "http://localhost:8080/"
@@ -87,6 +87,19 @@ export async function Fillddl(Query) {
 	let result = await promise; // wait until the promise resolves (*)
 	return result;
 }
+
+export const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={props => {
+      var currentUser = localStorage.getItem("loggoed");
+        if (!currentUser) {
+            // not logged in so redirect to login page with the return url
+            return <Redirect to={{ pathname: '/Login', state: { from: props.location } }} />
+        }
+
+        // authorised so return component
+        return <Component {...props} />
+    }} />
+)
 
 export function SessionNotSet() {
 	var loggoed = localStorage.getItem("loggoed");
